@@ -1,17 +1,12 @@
 pipeline {
-    agent {
-        label 'linux'
-    }
+    agent any
 
     stages {
-
-        stage('Build') {
+        stage('Docker Test') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                sh 'docker version'
+                sh 'docker images'
             }
         }
-
     }
-
-    
 }
