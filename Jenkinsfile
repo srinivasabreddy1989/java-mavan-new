@@ -10,6 +10,19 @@ pipeline {
     }
 
     stages {
+        stage('Debug') {
+    steps {
+        sh '''
+            id
+            whoami || true
+            echo "HOME=$HOME"
+            pwd
+            ls -ld /root || true
+            ls -ld /root/.m2 || true
+            ls -ld /var/lib/jenkins || true
+        '''
+        }
+    }
 
         stage('Build') {
             steps {
